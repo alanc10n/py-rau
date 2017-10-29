@@ -1,8 +1,6 @@
 import humanfriendly
 from redis import StrictRedis
 
-BATCH_SIZE = 20
-
 
 class Command:
     """ Commands to run against the specified redis instance """
@@ -27,9 +25,9 @@ class Command:
         pipe = self.redis.pipeline()
         details = []
 
-        strides = xrange(0, len(key_list), BATCH_SIZE)
+        strides = xrange(0, len(key_list), self.batch_size)
         for i in strides:
-            for j in key_list[i: i + BATCH_SIZE]:
+            for j in key_list[i: i + self.batch_size]:
                 pipe.debug_object(j)
             batch_dets = pipe.execute()
             details.extend(map(self._get_obj_details, batch_dets))
