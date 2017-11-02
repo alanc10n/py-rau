@@ -1,6 +1,6 @@
 import humanfriendly
 from redis import StrictRedis
-
+from six.moves import range
 
 class Command:
     """ Commands to run against the specified redis instance """
@@ -25,7 +25,7 @@ class Command:
         pipe = self.redis.pipeline()
         details = []
 
-        strides = xrange(0, len(key_list), self.batch_size)
+        strides = range(0, len(key_list), self.batch_size)
         for i in strides:
             for j in key_list[i: i + self.batch_size]:
                 pipe.debug_object(j)
