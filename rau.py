@@ -34,7 +34,6 @@ def parse_args():
     key_parser.set_defaults(func=keys)
 
     args = parser.parse_args()
-    print args
     return args
 
 
