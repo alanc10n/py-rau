@@ -1,6 +1,7 @@
 import humanfriendly
 from redis import StrictRedis
 from six.moves import range
+from tabulate import tabulate
 
 class Command:
     """ Commands to run against the specified redis instance """
@@ -42,10 +43,15 @@ class Command:
             detailed_result = self.get_details(key_list)
             result = []
             for r in detailed_result:
-                result.append('%s : %s' % (r[0],
-                              humanfriendly.format_size(r[1])))
+                #result.append('%s : %s' % (r[0],
+                #              humanfriendly.format_size(r[1])))
+                result.append((r[0].decode(), humanfriendly.format_size(r[1])))
+            headers = ['Name', 'Size']
         else:
-            result = key_list
+            result = [(x.decode(),) for x in key_list]
+            headers = ['Name',]
 
-        for value in result:
-            print(value)
+        print(tabulate(result, headers=headers))
+        #for value in result:
+        #   print(value)
+
