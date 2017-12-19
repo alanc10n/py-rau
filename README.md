@@ -5,10 +5,10 @@ This is a simple utility to aid in manual redis administration tasks such as rem
 This is very much a work in progress, so expect more commands to appear as I attempt to scratch itches or think of 
 useful features. At the moment, it only supports deleting keys matching a given pattern and listing keys.
 
-## Usage
 
-Install the dependencies (optionally in a virtual environment) with `pip install -r requirements.txt`. Then run 
-`python rau.py -h` to see options.
+## Development
+
+Create a virtual environment, activate it, and run `pip install -e .`. Hack away.
 
 ### Examples
 
