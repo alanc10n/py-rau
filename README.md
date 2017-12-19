@@ -12,6 +12,6 @@ Create a virtual environment, activate it, and run `pip install -e .`. Hack away
 
 ### Examples
 
-To delete all keys starting with 'foo' from a local redis instance: `python rau.py delete 'foo*'`.
+To delete all keys starting with 'foo' from a local redis instance: `pyrau delete 'foo*'`.
 
-To list all keys with details: `python rau.py keys -d`.
+To list all keys with details: `pyrau keys -d`.
