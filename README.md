@@ -1,4 +1,4 @@
-# py-rau
+# pyrau
 Python Redis Admin Utility
 
 This is a simple utility to aid in manual redis administration tasks such as removing keys matching a given pattern.

@@ -1,6 +1,6 @@
 import argparse
 from redis import StrictRedis
-from rau.commands import Command
+from pyrau.commands import Command
 
 
 def delete(args, command):
