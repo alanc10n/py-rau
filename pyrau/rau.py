@@ -10,7 +10,8 @@ def delete(args, command):
 
 def keys(args, command):
     """ Execute the keys command """
-    command.keys(args.pattern, args.details)
+    details = args.details | args.sorted
+    command.keys(args.pattern, details, args.sorted)
 
 
 def parse_args():
@@ -30,6 +31,9 @@ def parse_args():
                             default=None)
     key_parser.add_argument('-d', '--details',
                             help='Include details for key(s)',
+                            action='store_true')
+    key_parser.add_argument('-s', '--sorted',
+                            help='Sort result by size, implies --details',
                             action='store_true')
     key_parser.set_defaults(func=keys)
 

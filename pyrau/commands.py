@@ -35,12 +35,15 @@ class Command:
 
         return zip(key_list, details)
 
-    def keys(self, key_pattern, details=False):
+    def keys(self, key_pattern, details=False, sort_by_size=False):
         """ List keys matching pattern, optionally with details like size """
         key_list = list(self.redis.scan_iter(key_pattern))
 
         if details:
             detailed_result = self.get_details(key_list)
+            if sort_by_size:
+                detailed_result = sorted(detailed_result, key=lambda x: x[1], reverse=True)
+
             result = []
             for r in detailed_result:
                 #result.append('%s : %s' % (r[0],
